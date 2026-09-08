@@ -77,6 +77,24 @@ class ScanTests(unittest.TestCase):
         with patch.dict(os.environ, {"ALPACA_API_KEY":"test", "ALPACA_SECRET_KEY":"test"}), patch.object(scan, "fetch", side_effect=pages):
             self.assertEqual(set(scan.get_bars(["AAA"], NOW)), {"AAA", "SPY"})
 
+    def test_consensus_math_uses_latest_valid_period(self):
+        rows = [
+            {"symbol":"AAA","period":"2026-07-01","strongBuy":2,"buy":6,"hold":3,"sell":1,"strongSell":0},
+            {"symbol":"AAA","period":"2026-08-01","strongBuy":3,"buy":9,"hold":5,"sell":2,"strongSell":1},
+        ]
+        result = scan.normalize_recommendation("AAA", rows, NOW)
+        self.assertEqual(result["total"], 20)
+        self.assertEqual(result["buy_pct"], 60)
+        self.assertEqual(result["hold_pct"], 25)
+        self.assertEqual(result["sell_pct"], 15)
+        self.assertEqual(result["balance"], 0.45)
+        self.assertEqual(result["status"], "Current")
+
+    def test_consensus_zero_or_invalid_is_unavailable(self):
+        zero = [{"symbol":"AAA","period":"2026-08-01","strongBuy":0,"buy":0,"hold":0,"sell":0,"strongSell":0}]
+        self.assertEqual(scan.normalize_recommendation("AAA", zero, NOW)["status"], "Unavailable")
+        self.assertEqual(scan.normalize_recommendation("AAA", {"bad":"shape"}, NOW)["status"], "Unavailable")
+
     def test_no_keys_produces_honest_empty_snapshot(self):
         with tempfile.TemporaryDirectory() as temp, patch.dict(os.environ, {}, clear=True):
             root = Path(temp)
@@ -86,6 +104,8 @@ class ScanTests(unittest.TestCase):
             payload = scan.run(NOW, root)
             self.assertEqual(payload["status"], "setup")
             self.assertIsNone(payload["stocks"][0]["close"])
+            self.assertEqual(payload["consensus_status"], "setup")
+            self.assertEqual(payload["analyst_consensus"], [])
             self.assertEqual(len(list((root / "data/scans").glob('*.json'))), 1)
 
     def test_failed_provider_never_keeps_success_status(self):

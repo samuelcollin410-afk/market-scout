@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "generated_at": null,
+  "status": "setup",
+  "market_status": "setup",
+  "message": "Market data is not connected. Open Setup to connect your data and run the first scan.",
+  "benchmark": {
+    "symbol": "SPY",
+    "return_63d": null
+  },
+  "stocks": [
+    {
+      "symbol": "AAPL",
+      "name": "Apple",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    },
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    },
+    {
+      "symbol": "JPM",
+      "name": "JPMorgan Chase",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    },
+    {
+      "symbol": "V",
+      "name": "Visa",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    },
+    {
+      "symbol": "WMT",
+      "name": "Walmart",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    },
+    {
+      "symbol": "COST",
+      "name": "Costco",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    },
+    {
+      "symbol": "XOM",
+      "name": "Exxon Mobil",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    },
+    {
+      "symbol": "CAT",
+      "name": "Caterpillar",
+      "status": "Unavailable",
+      "reason": "Connect market data and run your first daily scan.",
+      "close": null,
+      "return_20d": null,
+      "excess_63d": null,
+      "as_of": null,
+      "window_start": null
+    }
+  ],
+  "mentions": [],
+  "sources": []
+}

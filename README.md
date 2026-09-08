@@ -11,6 +11,7 @@ A personal stock-research dashboard for Collin. Version 0.1 sets up the collecti
 - Optional analyst-consensus adapter with dated Buy/Hold/Sell distributions and honest missing-data states.
 - Permanent per-run JSON archives committed by GitHub Actions, including failed scans.
 - Browser-local paper-decision journal with backup export/import. It is a journal, not a portfolio simulator.
+- Optional weekly Alpaca paper bot with a fixed budget, five-position maximum, kill switch, and public action log.
 - Scheduled GitHub Actions workflow and optional GitHub Pages deployment.
 - No third-party Python packages, npm packages, database service, or paid AI subscription required for this starter.
 
@@ -30,7 +31,7 @@ Check that `.github/workflows/scan-and-publish.yml` appears under that exact pat
 
 ## 2. Create an Alpaca paper account
 
-Open https://app.alpaca.markets/signup and complete Alpaca's account flow. Use the paper-trading area and generate paper API credentials. Do not fund a live brokerage account for this step. This project calls only the market-data API, never order endpoints.
+Open https://app.alpaca.markets/signup and complete Alpaca's account flow. Use the paper-trading area and generate paper API credentials. Do not fund a live brokerage account for this step. Market scanning is read-only. The optional bot can call order endpoints only at the hard-coded `https://paper-api.alpaca.markets` host when its separate repository-variable kill switch is enabled; there is no configurable or live-trading base URL.
 
 In your GitHub repository, open Settings → Secrets and variables → Actions → New repository secret. Add:
 
@@ -69,7 +70,7 @@ The Refresh data button reloads the most recently published snapshot. It cannot 
 
 ## 5. Pick stocks and trader sources
 
-`config/watchlist.json` contains 12 initial large-company examples across several sectors. These are implementation examples, not stock recommendations or a statistically selected universe. Change the list to your chosen symbols; the collector accepts 1–200 unique symbols.
+`config/watchlist.json` contains 30 large-company examples across technology, communications, finance, healthcare, consumer, energy, and industrial sectors. These are implementation examples, not stock recommendations or a statistically selected universe. Change the list to your chosen symbols; the collector accepts 1–200 unique symbols.
 
 `config/sources.json` starts empty. Send the names or URLs of 3–5 traders you want to evaluate. We can check which provide authorized RSS/Atom feeds or APIs before adding them.
 
@@ -95,6 +96,33 @@ A stock is labeled **Research** only if all three conditions hold:
 
 **Watch** means it fails at least one condition; it is not a sell instruction. **Unavailable** means the data cannot support the screen. No ranks or win probabilities are invented.
 
+## Weekly paper bot
+
+The paper bot begins in preview mode. It ranks only stocks that pass the price-trend screen and have a current analyst aggregate with at least 10 opinions, at least 60% Buy/Strong Buy, and no more than 20% Sell/Strong Sell. Its experimental ranking score is:
+
+`63-session lead vs SPY + 0.25 × 20-session return + 10 × analyst opinion balance`
+
+This formula is a transparent hypothesis, not a forecast or a proven edge. The default experiment selects at most five stocks, assigns 18% of a fixed $10,000 paper budget to each, and checks for rotation no more than once every seven days. An exited target is sold; a newly selected target is bought with a fractional market order. Orders submitted after the daily scan are queued for the next regular session.
+
+Safeguards:
+
+- `ENABLE_AUTO_PAPER_TRADING` must equal `true`; changing it to `false` stops new automatic orders.
+- The only trading host in the module is Alpaca's paper endpoint.
+- The bot blocks during regular market hours, when data is stale, when either data source failed, when the paper account is blocked, or while any paper order is open.
+- It manages only symbols recorded in `data/paper_state.json` as positions created by this bot. Other Alpaca paper positions are not sold or resized.
+- The paper budget is clamped between $500 and $100,000 and defaults to $10,000.
+- It does not automatically retry a blocked or partially submitted batch.
+- Public logs omit account identifiers, API responses, credentials, balances, and provider content.
+
+To enable the experiment, create repository variables under **Settings → Secrets and variables → Actions → Variables**:
+
+| Variable | Value |
+| --- | --- |
+| `ENABLE_AUTO_PAPER_TRADING` | `true` |
+| `PAPER_BUDGET_USD` | `10000` |
+
+Run **Actions → Scan and publish** once after enabling. Review the targets and submitted paper orders in both the Paper bot page and Alpaca's paper dashboard. Paper fills do not model every cost, queue condition, latency, market impact, or live-trading behavior.
+
 The scanner requires 64 matching observations for the 63-session return. It excludes incomplete daily bars, refuses mismatched end dates, and rejects data older than four calendar days. Daily bars use Alpaca's `all` corporate-action adjustment: the displayed adjusted close is not an executable quote. SPY is an ETF proxy for the S&P 500, not the index itself. `pp` means percentage points. These are historical price comparisons, not portfolio performance or a validated backtest.
 
 ## Schedule and storage
@@ -106,6 +134,8 @@ GitHub can delay scheduled jobs; this is not a real-time trading service. Schedu
 - `dist/data/latest.json`: the latest dashboard snapshot.
 - `data/scans/`: historical scans committed by the workflow; first observations are not retroactively replaced.
 - `data/seen.json`: first-seen times for deduplication.
+- `data/paper_state.json`: bot-managed symbols and the last rebalance time; no account identifiers or balances.
+- `data/paper_actions/`: timestamped paper-order summaries without provider response bodies or secrets.
 - Paper journal: this browser's local storage only. Export backups regularly, especially before clearing browser data or changing site addresses.
 
 The journal records your supplied observed price and your decision time. It does not verify prices, fill trades, maintain cash, calculate profit, or synchronize devices. Private journal entries are not uploaded by the scanner.
@@ -133,7 +163,7 @@ GitHub Actions supplies Python and Node on its runner; you do not need to instal
 
 ## Next development stages
 
-After the first analyst-provider test, move from vendor totals to structured firm-level recommendations with original dates, rating changes, withdrawals, and source-grounded evidence. Only then consider combining providers, because copied ratings must count once. A later portfolio simulator should use next-available execution prices, costs, corporate actions, and matching benchmark cash flows. Compare the simple rule against versions that add source signals, and track all suggestions prospectively, including losses. AI analysis, Form 4/13F ingestion, trader rankings, push notifications, and automatic buy/sell suggestions are not yet implemented.
+Next, move from vendor totals to structured firm-level recommendations with original dates, rating changes, withdrawals, and source-grounded evidence. Only then consider combining providers, because copied ratings must count once. Track the paper bot prospectively, including rejected orders, missed fills, losses, turnover, drawdowns, and matching SPY cash flows. AI analysis, Form 4/13F ingestion, trader rankings, push notifications, and real-money trading are not implemented.
 
 No trading performance was measured in this setup. The starter must not be presented as a proven way to beat the S&P 500.
 

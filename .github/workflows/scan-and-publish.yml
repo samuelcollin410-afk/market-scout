@@ -34,6 +34,7 @@ jobs:
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
         run: python scripts/scan.py
       - name: Preserve scan history
         run: |
@@ -60,6 +61,7 @@ jobs:
               out.write('Market status: ' + data['market_status'] + '\n')
               out.write('Stocks: ' + str(len(data['stocks'])) + '\n')
               out.write('Source mentions: ' + str(len(data['mentions'])) + '\n')
+              out.write('Analyst consensus: ' + data['consensus_status'] + '\n')
           PY
       - name: Upload website
         uses: actions/upload-pages-artifact@v4

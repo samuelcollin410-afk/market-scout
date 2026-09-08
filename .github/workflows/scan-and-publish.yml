@@ -1,0 +1,84 @@
+name: Scan and publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # 10:17 pm EDT / 9:17 pm EST, Monday-Friday evenings.
+    - cron: '17 2 * * 2-6'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-scout
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test data handling
+        run: python -m unittest discover -s tests -v
+      - name: Collect daily research
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python scripts/scan.py
+      - name: Preserve scan history
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dist/data/latest.json
+          git add -f data/seen.json data/scans/
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record daily research scan'
+            git push origin HEAD:main
+          fi
+      - name: Validate website assets
+        run: |
+          node --check dist/app.js
+          python scripts/check_site.py
+      - name: Write run summary
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          data = json.loads(Path('dist/data/latest.json').read_text())
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
+              out.write('## Market Scout\n\n' + data['message'] + '\n\n')
+              out.write('Market status: ' + data['market_status'] + '\n')
+              out.write('Stocks: ' + str(len(data['stocks'])) + '\n')
+              out.write('Source mentions: ' + str(len(data['mentions'])) + '\n')
+          PY
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    # Enable this repository variable after selecting GitHub Actions in Settings > Pages.
+    if: ${{ vars.ENABLE_PAGES == 'true' }}
+    needs: scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

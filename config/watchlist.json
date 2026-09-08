@@ -1,0 +1,14 @@
+[
+  {"symbol":"AAPL","name":"Apple"},
+  {"symbol":"MSFT","name":"Microsoft"},
+  {"symbol":"NVDA","name":"NVIDIA"},
+  {"symbol":"AMZN","name":"Amazon"},
+  {"symbol":"GOOGL","name":"Alphabet"},
+  {"symbol":"META","name":"Meta Platforms"},
+  {"symbol":"JPM","name":"JPMorgan Chase"},
+  {"symbol":"V","name":"Visa"},
+  {"symbol":"WMT","name":"Walmart"},
+  {"symbol":"COST","name":"Costco"},
+  {"symbol":"XOM","name":"Exxon Mobil"},
+  {"symbol":"CAT","name":"Caterpillar"}
+]

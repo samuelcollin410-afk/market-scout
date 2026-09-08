@@ -9,7 +9,7 @@ const tone = v => Number.isFinite(v) ? (v >= 0 ? "positive" : "negative") : "mut
 const time = v => v && Number.isFinite(Date.parse(v)) ? new Date(v).toLocaleString() : "Not available";
 function safeURL(v) {try {const u = new URL(v); return u.protocol === "https:" ? u.href : "";} catch {return "";}}
 function toast(message) {$("toast").textContent=message; $("toast").hidden=false; clearTimeout(toast.timer); toast.timer=setTimeout(()=>$("toast").hidden=true,5000);}
-function navigate() {const requested=location.hash.slice(1); const view=["overview","sources","consensus","journal","setup"].includes(requested)?requested:"overview"; document.querySelectorAll(".view").forEach(e=>e.hidden=e.id!==view);document.querySelectorAll("nav a").forEach(e=>{e.classList.toggle("active",e.dataset.view===view);if(e.dataset.view===view)e.setAttribute("aria-current","page");else e.removeAttribute("aria-current");});}
+function navigate() {const requested=location.hash.slice(1); const view=["overview","sources","consensus","paper-bot","journal","setup"].includes(requested)?requested:"overview"; document.querySelectorAll(".view").forEach(e=>e.hidden=e.id!==view);document.querySelectorAll("nav a").forEach(e=>{e.classList.toggle("active",e.dataset.view===view);if(e.dataset.view===view)e.setAttribute("aria-current","page");else e.removeAttribute("aria-current");});}
 async function load() {
  $("refresh").disabled=true;
  try {const response=await fetch("./data/latest.json",{cache:"no-store"});if(!response.ok)throw new Error("fetch");const data=await response.json();if(data.schema_version!==1 || !Array.isArray(data.stocks))throw new Error("schema");state.data=data; render();}
@@ -27,7 +27,7 @@ function render() {
  $("benchmark-return").textContent=pct(d.benchmark?.return_63d);
  $("benchmark-return").className=tone(d.benchmark?.return_63d);
  $("mention-count").textContent=d.sources?.length?d.mentions.length:"—";
- renderStocks(); renderSources(); renderConsensus();
+ renderStocks(); renderSources(); renderConsensus(); renderPaperBot();
 }
 function renderStocks() {
  if(!state.data)return;const q=$("search").value.toLowerCase(),filter=$("filter").value;
@@ -53,6 +53,18 @@ function renderConsensus() {
  $("consensus-rows").innerHTML=rows.map(r=>{const usable=Number.isFinite(r.total)&&r.total>0;
   const buy=usable?r.buy_pct:0,hold=usable?r.hold_pct:0,sell=usable?r.sell_pct:0;
   return `<tr><td><div class="company"><span class="ticker-icon">${esc(r.symbol?.[0])}</span><span><b>${esc(r.symbol)}</b><small>${esc(names.get(r.symbol)||"")}</small></span></div></td><td><div class="mix" aria-label="${usable?`${buy}% Buy, ${hold}% Hold, ${sell}% Sell`:"No analyst opinions"}"><span class="mix-buy" style="width:${buy}%"></span><span class="mix-hold" style="width:${hold}%"></span><span class="mix-sell" style="width:${sell}%"></span></div></td><td class="positive">${usable?`${buy.toFixed(0)}%`:"—"}</td><td>${usable?`${hold.toFixed(0)}%`:"—"}</td><td class="negative">${usable?`${sell.toFixed(0)}%`:"—"}</td><td>${usable?esc(r.total):"—"}</td><td>${esc(r.period||"—")}</td><td><span class="badge ${r.status==="Current"?"research":""}" title="${esc(r.message||"")}">${esc(r.status||"Unavailable")}</span></td></tr>`}).join("")||'<tr><td colspan="8" class="empty">No analyst provider is connected yet.<br>Add an authorized provider key only after reviewing its access and display terms.</td></tr>';
+}
+function renderPaperBot() {
+ const bot=state.data.paper_bot||{status:"setup",enabled:false,message:"The paper bot has not completed its first preview.",target_symbols:[],candidates:[],actions:[]};
+ const box=$("paper-status");box.classList.toggle("good",["preview","waiting","submitted","no-change"].includes(bot.status));box.textContent=bot.message;
+ $("paper-mode").textContent=bot.enabled?"ON":"PREVIEW";
+ $("paper-budget").textContent=money(bot.budget_usd);
+ $("paper-target-count").textContent=Array.isArray(bot.target_symbols)?bot.target_symbols.length:"—";
+ $("paper-last").textContent=bot.last_rebalance_at?new Date(bot.last_rebalance_at).toLocaleDateString():"Never";
+ const candidates=Array.isArray(bot.candidates)?bot.candidates:[];
+ $("paper-targets").innerHTML=candidates.map((row,index)=>`<article><span class="target-rank">0${index+1}</span><div><h3>${esc(row.symbol)} <small>${esc(row.name)}</small></h3><p><b>${pct(row.excess_63d)}</b> vs SPY · ${Number(row.buy_pct).toFixed(0)}% Buy · ${esc(row.opinion_count)} opinions</p><span class="muted">Experimental score ${Number(row.score).toFixed(2)} · analyst period ${esc(row.opinion_period)}</span></div></article>`).join("")||'<div class="empty">No stocks currently pass every paper-bot rule.</div>';
+ const actions=Array.isArray(bot.actions)?bot.actions:[];
+ $("paper-actions").innerHTML=actions.map(a=>`<p><span class="badge ${a.side==="buy"?"research":""}">${esc(a.side).toUpperCase()}</span> <b>${esc(a.symbol)}</b> <span class="muted">${a.notional_usd?money(a.notional_usd):a.quantity?`${esc(a.quantity)} shares`:esc(a.status)}</span></p>`).join("")||'<p class="muted">No automatic paper orders have been submitted.</p>';
 }
 const journalKey="market-scout-journal-v1";
 function readJournal() {const raw=localStorage.getItem(journalKey);if(!raw)return [];const data=JSON.parse(raw);if(!Array.isArray(data)||!data.every(validEntry))throw new Error("Invalid journal");return data;}

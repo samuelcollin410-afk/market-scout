@@ -36,12 +36,21 @@ jobs:
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
         run: python scripts/scan.py
+      - name: Run paper-only strategy
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ENABLE_AUTO_PAPER_TRADING: ${{ vars.ENABLE_AUTO_PAPER_TRADING }}
+          PAPER_BUDGET_USD: ${{ vars.PAPER_BUDGET_USD }}
+        run: python scripts/paper_trade.py
       - name: Preserve scan history
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add dist/data/latest.json
           git add -f data/seen.json data/scans/
+          if [ -e data/paper_state.json ]; then git add -f data/paper_state.json; fi
+          if [ -d data/paper_actions ]; then git add -f data/paper_actions/; fi
           if ! git diff --cached --quiet; then
             git commit -m 'Record daily research scan'
             git push origin HEAD:main
@@ -62,6 +71,8 @@ jobs:
               out.write('Stocks: ' + str(len(data['stocks'])) + '\n')
               out.write('Source mentions: ' + str(len(data['mentions'])) + '\n')
               out.write('Analyst consensus: ' + data['consensus_status'] + '\n')
+              out.write('Paper bot: ' + data['paper_bot']['status'] + '\n')
+              out.write('Paper targets: ' + ', '.join(data['paper_bot']['target_symbols']) + '\n')
           PY
       - name: Upload website
         uses: actions/upload-pages-artifact@v4

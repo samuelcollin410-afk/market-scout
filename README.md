@@ -8,6 +8,7 @@ A personal stock-research dashboard for Collin. Version 0.1 sets up the collecti
 - Read-only Alpaca IEX daily-data collector; all result pages are fetched.
 - Transparent price-trend screen with matching SPY dates and stale-data checks.
 - RSS/Atom collector for explicit watchlist cashtags, source links, publication time, and first-seen time.
+- Optional analyst-consensus adapter with dated Buy/Hold/Sell distributions and honest missing-data states.
 - Permanent per-run JSON archives committed by GitHub Actions, including failed scans.
 - Browser-local paper-decision journal with backup export/import. It is a journal, not a portfolio simulator.
 - Scheduled GitHub Actions workflow and optional GitHub Pages deployment.
@@ -39,6 +40,8 @@ In your GitHub repository, open Settings → Secrets and variables → Actions �
 | `ALPACA_SECRET_KEY` | Your Alpaca paper secret key |
 
 Never paste actual secrets into chat, `.env.example`, source files, GitHub issues, website inputs, or screenshots. No secrets are needed in browser code. The supplied `.env.example` lists names only; the scanner does not automatically load .env files.
+
+The separate analyst-consensus page supports an optional `FINNHUB_API_KEY` repository secret. Before adding it, confirm that your Finnhub tier includes the recommendation endpoint and permits your intended public display. If the secret is absent, the page stays in an honest setup state. Market Scout combines Strong Buy with Buy and Strong Sell with Sell, keeps Hold separate, labels periods older than 120 days stale, and never converts missing coverage into Hold. This vendor aggregate is not firm-deduplicated and must not be added to another vendor aggregate as if it created new independent opinions.
 
 Alpaca's paper-only data is IEX, one exchange. It is not a complete consolidated market feed. Use the free available access initially; paid data is not necessary just to test this starter. Check your data provider's display/redistribution terms before making fetched market data publicly available.
 
@@ -130,7 +133,7 @@ GitHub Actions supplies Python and Node on its runner; you do not need to instal
 
 ## Next development stages
 
-After the first live data scan and source selection, implement structured recommendation extraction with source-grounded evidence, then a portfolio simulator with next-available execution prices, costs, corporate actions, and matching benchmark cash flows. Compare the simple rule against the versions that add trader signals and AI. Track all suggestions prospectively, including losses. AI analysis, Form 4/13F ingestion, trader rankings, push notifications, and automatic buy/sell suggestions are not yet implemented.
+After the first analyst-provider test, move from vendor totals to structured firm-level recommendations with original dates, rating changes, withdrawals, and source-grounded evidence. Only then consider combining providers, because copied ratings must count once. A later portfolio simulator should use next-available execution prices, costs, corporate actions, and matching benchmark cash flows. Compare the simple rule against versions that add source signals, and track all suggestions prospectively, including losses. AI analysis, Form 4/13F ingestion, trader rankings, push notifications, and automatic buy/sell suggestions are not yet implemented.
 
 No trading performance was measured in this setup. The starter must not be presented as a proven way to beat the S&P 500.
 

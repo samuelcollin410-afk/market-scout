@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "managed_symbols": [
+    "CRM",
+    "JNJ",
+    "MRK",
+    "MSFT",
+    "V"
+  ],
+  "last_rebalance_at": "2026-09-08T12:28:05.242440Z",
+  "last_result": "submitted",
+  "last_actions": [
+    {
+      "symbol": "CRM",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    },
+    {
+      "symbol": "MRK",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    },
+    {
+      "symbol": "MSFT",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    },
+    {
+      "symbol": "JNJ",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    },
+    {
+      "symbol": "V",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    }
+  ]
+}

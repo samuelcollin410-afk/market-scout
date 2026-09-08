@@ -9,7 +9,7 @@ const tone = v => Number.isFinite(v) ? (v >= 0 ? "positive" : "negative") : "mut
 const time = v => v && Number.isFinite(Date.parse(v)) ? new Date(v).toLocaleString() : "Not available";
 function safeURL(v) {try {const u = new URL(v); return u.protocol === "https:" ? u.href : "";} catch {return "";}}
 function toast(message) {$("toast").textContent=message; $("toast").hidden=false; clearTimeout(toast.timer); toast.timer=setTimeout(()=>$("toast").hidden=true,5000);}
-function navigate() {const requested=location.hash.slice(1); const view=["overview","sources","journal","setup"].includes(requested)?requested:"overview"; document.querySelectorAll(".view").forEach(e=>e.hidden=e.id!==view);document.querySelectorAll("nav a").forEach(e=>{e.classList.toggle("active",e.dataset.view===view);if(e.dataset.view===view)e.setAttribute("aria-current","page");else e.removeAttribute("aria-current");});}
+function navigate() {const requested=location.hash.slice(1); const view=["overview","sources","consensus","journal","setup"].includes(requested)?requested:"overview"; document.querySelectorAll(".view").forEach(e=>e.hidden=e.id!==view);document.querySelectorAll("nav a").forEach(e=>{e.classList.toggle("active",e.dataset.view===view);if(e.dataset.view===view)e.setAttribute("aria-current","page");else e.removeAttribute("aria-current");});}
 async function load() {
  $("refresh").disabled=true;
  try {const response=await fetch("./data/latest.json",{cache:"no-store"});if(!response.ok)throw new Error("fetch");const data=await response.json();if(data.schema_version!==1 || !Array.isArray(data.stocks))throw new Error("schema");state.data=data; render();}
@@ -27,7 +27,7 @@ function render() {
  $("benchmark-return").textContent=pct(d.benchmark?.return_63d);
  $("benchmark-return").className=tone(d.benchmark?.return_63d);
  $("mention-count").textContent=d.sources?.length?d.mentions.length:"—";
- renderStocks(); renderSources();
+ renderStocks(); renderSources(); renderConsensus();
 }
 function renderStocks() {
  if(!state.data)return;const q=$("search").value.toLowerCase(),filter=$("filter").value;
@@ -44,6 +44,15 @@ function renderSources() {
  const d=state.data;
  $("source-status").innerHTML=d.sources.length?`<h2>Your connected feeds</h2>${d.sources.map(s=>`<p><b>${esc(s.name)}</b> <span class="badge">${esc(s.status)}</span></p><p class="muted">${esc(s.message||"")}</p>`).join("")}`:'<h2>No trader sources selected yet</h2><p class="muted">Add authorized RSS or Atom feeds to config/sources.json. The scanner looks for explicit cashtags such as $NVDA and keeps the original source link. Website scraping and AI interpretation are not connected.</p><a href="#setup" class="text-link">View setup ↗</a>';
  $("mentions").innerHTML=d.mentions.map(m=>`<article class="panel"><span class="label">${esc(m.source)} · MENTION ONLY</span><h3>${esc(m.title)}</h3><p>${m.symbols.map(s=>`<span class="badge">${esc(s)}</span>`).join(" ")}</p><p class="muted">Published: ${time(m.published_at)}<br>First collected: ${time(m.first_seen_at)}</p>${safeURL(m.url)?`<a class="text-link" href="${esc(safeURL(m.url))}" target="_blank" rel="noopener noreferrer">Read original ↗</a>`:""}</article>`).join("")||'<div class="empty">No recent matching cashtags collected.<br>Empty results are not a signal to buy or sell.</div>';
+}
+function renderConsensus() {
+ const d=state.data, rows=Array.isArray(d.analyst_consensus)?d.analyst_consensus:[];
+ const box=$("consensus-status");box.classList.toggle("good",d.consensus_status==="ok");
+ box.textContent=d.consensus_message||"Analyst consensus is not connected.";
+ const names=new Map(d.stocks.map(s=>[s.symbol,s.name]));
+ $("consensus-rows").innerHTML=rows.map(r=>{const usable=Number.isFinite(r.total)&&r.total>0;
+  const buy=usable?r.buy_pct:0,hold=usable?r.hold_pct:0,sell=usable?r.sell_pct:0;
+  return `<tr><td><div class="company"><span class="ticker-icon">${esc(r.symbol?.[0])}</span><span><b>${esc(r.symbol)}</b><small>${esc(names.get(r.symbol)||"")}</small></span></div></td><td><div class="mix" aria-label="${usable?`${buy}% Buy, ${hold}% Hold, ${sell}% Sell`:"No analyst opinions"}"><span class="mix-buy" style="width:${buy}%"></span><span class="mix-hold" style="width:${hold}%"></span><span class="mix-sell" style="width:${sell}%"></span></div></td><td class="positive">${usable?`${buy.toFixed(0)}%`:"—"}</td><td>${usable?`${hold.toFixed(0)}%`:"—"}</td><td class="negative">${usable?`${sell.toFixed(0)}%`:"—"}</td><td>${usable?esc(r.total):"—"}</td><td>${esc(r.period||"—")}</td><td><span class="badge ${r.status==="Current"?"research":""}" title="${esc(r.message||"")}">${esc(r.status||"Unavailable")}</span></td></tr>`}).join("")||'<tr><td colspan="8" class="empty">No analyst provider is connected yet.<br>Add an authorized provider key only after reviewing its access and display terms.</td></tr>';
 }
 const journalKey="market-scout-journal-v1";
 function readJournal() {const raw=localStorage.getItem(journalKey);if(!raw)return [];const data=JSON.parse(raw);if(!Array.isArray(data)||!data.every(validEntry))throw new Error("Invalid journal");return data;}

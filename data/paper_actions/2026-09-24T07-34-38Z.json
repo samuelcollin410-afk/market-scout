@@ -1,17 +1,15 @@
 {
   "schema_version": 1,
-  "managed_symbols": [
-    "ABBV",
-    "AMD",
+  "recorded_at": "2026-09-24T07:34:38.104600Z",
+  "result": "submitted",
+  "target_symbols": [
     "CRM",
-    "CVX",
     "META",
-    "MRK",
-    "MSFT"
+    "MSFT",
+    "AMD",
+    "CVX"
   ],
-  "last_rebalance_at": "2026-09-24T07:34:38.104600Z",
-  "last_result": "submitted",
-  "last_actions": [
+  "actions": [
     {
       "symbol": "ABBV",
       "side": "sell",

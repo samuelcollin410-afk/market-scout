@@ -1,17 +1,15 @@
 {
   "schema_version": 1,
-  "managed_symbols": [
-    "AAPL",
-    "AMD",
-    "CRM",
-    "CVX",
-    "META",
+  "recorded_at": "2026-10-01T08:53:00.881035Z",
+  "result": "submitted",
+  "target_symbols": [
     "MSFT",
-    "NVDA"
+    "META",
+    "AMD",
+    "NVDA",
+    "AAPL"
   ],
-  "last_rebalance_at": "2026-10-01T08:53:00.881035Z",
-  "last_result": "submitted",
-  "last_actions": [
+  "actions": [
     {
       "symbol": "CRM",
       "side": "sell",

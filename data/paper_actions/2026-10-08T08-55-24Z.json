@@ -1,16 +1,15 @@
 {
   "schema_version": 1,
-  "managed_symbols": [
-    "AAPL",
-    "ABBV",
-    "AMD",
-    "META",
+  "recorded_at": "2026-10-08T08:55:24.106045Z",
+  "result": "submitted",
+  "target_symbols": [
     "MSFT",
-    "NVDA"
+    "AMD",
+    "NVDA",
+    "META",
+    "ABBV"
   ],
-  "last_rebalance_at": "2026-10-08T08:55:24.106045Z",
-  "last_result": "submitted",
-  "last_actions": [
+  "actions": [
     {
       "symbol": "AAPL",
       "side": "sell",

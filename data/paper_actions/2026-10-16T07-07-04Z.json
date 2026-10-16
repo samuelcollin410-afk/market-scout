@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-16T07:07:04.449486Z",
+  "result": "submitted",
+  "target_symbols": [
+    "CRM",
+    "MSFT",
+    "CVX",
+    "META",
+    "AMD"
+  ],
+  "actions": [
+    {
+      "symbol": "ABBV",
+      "side": "sell",
+      "quantity": 6.627112403,
+      "status": "submitted"
+    },
+    {
+      "symbol": "NVDA",
+      "side": "sell",
+      "quantity": 7.863995805,
+      "status": "submitted"
+    },
+    {
+      "symbol": "CRM",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    },
+    {
+      "symbol": "CVX",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    },
+    {
+      "symbol": "AMD",
+      "side": "buy",
+      "notional_usd": 142.28,
+      "status": "submitted"
+    }
+  ]
+}

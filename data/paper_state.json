@@ -1,26 +1,45 @@
 {
   "schema_version": 1,
   "managed_symbols": [
-    "AAPL",
     "ABBV",
     "AMD",
+    "CRM",
+    "CVX",
     "META",
     "MSFT",
     "NVDA"
   ],
-  "last_rebalance_at": "2026-10-08T08:55:24.106045Z",
+  "last_rebalance_at": "2026-10-16T07:07:04.449486Z",
   "last_result": "submitted",
   "last_actions": [
     {
-      "symbol": "AAPL",
+      "symbol": "ABBV",
       "side": "sell",
-      "quantity": 5.462362979,
+      "quantity": 6.627112403,
       "status": "submitted"
     },
     {
-      "symbol": "ABBV",
+      "symbol": "NVDA",
+      "side": "sell",
+      "quantity": 7.863995805,
+      "status": "submitted"
+    },
+    {
+      "symbol": "CRM",
       "side": "buy",
       "notional_usd": 1800.0,
+      "status": "submitted"
+    },
+    {
+      "symbol": "CVX",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    },
+    {
+      "symbol": "AMD",
+      "side": "buy",
+      "notional_usd": 142.28,
       "status": "submitted"
     }
   ]

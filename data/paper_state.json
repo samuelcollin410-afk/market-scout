@@ -1,37 +1,37 @@
 {
   "schema_version": 1,
   "managed_symbols": [
-    "AMD",
+    "ABBV",
     "CRM",
     "CVX",
     "KO",
-    "META",
+    "LLY",
     "MSFT",
     "V"
   ],
-  "last_rebalance_at": "2026-10-23T07:27:38.897927Z",
+  "last_rebalance_at": "2026-10-30T08:35:57.328498Z",
   "last_result": "submitted",
   "last_actions": [
     {
-      "symbol": "AMD",
+      "symbol": "CRM",
       "side": "sell",
-      "quantity": 3.224892411,
+      "quantity": 7.178424725,
       "status": "submitted"
     },
     {
-      "symbol": "META",
+      "symbol": "KO",
       "side": "sell",
-      "quantity": 2.483541892,
+      "quantity": 18.986249206,
       "status": "submitted"
     },
     {
-      "symbol": "V",
+      "symbol": "LLY",
       "side": "buy",
       "notional_usd": 1800.0,
       "status": "submitted"
     },
     {
-      "symbol": "KO",
+      "symbol": "ABBV",
       "side": "buy",
       "notional_usd": 1800.0,
       "status": "submitted"

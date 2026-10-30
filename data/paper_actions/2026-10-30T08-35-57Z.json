@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-30T08:35:57.328498Z",
+  "result": "submitted",
+  "target_symbols": [
+    "LLY",
+    "CVX",
+    "ABBV",
+    "V",
+    "MSFT"
+  ],
+  "actions": [
+    {
+      "symbol": "CRM",
+      "side": "sell",
+      "quantity": 7.178424725,
+      "status": "submitted"
+    },
+    {
+      "symbol": "KO",
+      "side": "sell",
+      "quantity": 18.986249206,
+      "status": "submitted"
+    },
+    {
+      "symbol": "LLY",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    },
+    {
+      "symbol": "ABBV",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    }
+  ]
+}

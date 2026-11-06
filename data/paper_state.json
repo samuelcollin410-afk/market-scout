@@ -2,36 +2,42 @@
   "schema_version": 1,
   "managed_symbols": [
     "ABBV",
-    "CRM",
     "CVX",
-    "KO",
     "LLY",
+    "MRK",
     "MSFT",
-    "V"
+    "V",
+    "WMT"
   ],
-  "last_rebalance_at": "2026-10-30T08:35:57.328498Z",
+  "last_rebalance_at": "2026-11-06T09:20:26.467684Z",
   "last_result": "submitted",
   "last_actions": [
     {
-      "symbol": "CRM",
+      "symbol": "CVX",
       "side": "sell",
-      "quantity": 7.178424725,
+      "quantity": 8.079824207,
       "status": "submitted"
     },
     {
-      "symbol": "KO",
+      "symbol": "MSFT",
       "side": "sell",
-      "quantity": 18.986249206,
+      "quantity": 3.644453441,
       "status": "submitted"
     },
     {
       "symbol": "LLY",
       "side": "buy",
+      "notional_usd": 121.71,
+      "status": "submitted"
+    },
+    {
+      "symbol": "WMT",
+      "side": "buy",
       "notional_usd": 1800.0,
       "status": "submitted"
     },
     {
-      "symbol": "ABBV",
+      "symbol": "MRK",
       "side": "buy",
       "notional_usd": 1800.0,
       "status": "submitted"

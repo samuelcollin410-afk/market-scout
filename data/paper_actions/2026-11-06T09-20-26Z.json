@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-06T09:20:26.467684Z",
+  "result": "submitted",
+  "target_symbols": [
+    "V",
+    "LLY",
+    "ABBV",
+    "WMT",
+    "MRK"
+  ],
+  "actions": [
+    {
+      "symbol": "CVX",
+      "side": "sell",
+      "quantity": 8.079824207,
+      "status": "submitted"
+    },
+    {
+      "symbol": "MSFT",
+      "side": "sell",
+      "quantity": 3.644453441,
+      "status": "submitted"
+    },
+    {
+      "symbol": "LLY",
+      "side": "buy",
+      "notional_usd": 121.71,
+      "status": "submitted"
+    },
+    {
+      "symbol": "WMT",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    },
+    {
+      "symbol": "MRK",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    }
+  ]
+}

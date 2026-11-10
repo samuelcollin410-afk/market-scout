@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T08:44:09.972528Z",
+  "generated_at": "2026-11-10T09:44:08.780971Z",
   "status": "ok",
   "market_status": "ok",
   "message": "Daily research scan complete. Review the evidence before recording a paper decision.",
   "benchmark": {
     "symbol": "SPY",
-    "return_63d": -4.631,
-    "as_of": "2026-11-06"
+    "return_63d": -2.0674,
+    "as_of": "2026-11-09"
   },
   "stocks": [
     {
@@ -15,330 +15,330 @@
       "name": "Apple",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 342.41,
-      "return_20d": 1.7654,
-      "excess_63d": 15.7417,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 350.53,
+      "return_20d": 2.7812,
+      "excess_63d": 17.0386,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "MSFT",
       "name": "Microsoft",
-      "status": "Watch",
-      "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 530.58,
-      "return_20d": -0.8623,
-      "excess_63d": 9.6547,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "status": "Research",
+      "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
+      "close": 545.22,
+      "return_20d": 0.7642,
+      "excess_63d": 10.4998,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "NVDA",
       "name": "NVIDIA",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 186.7,
-      "return_20d": -18.596,
-      "excess_63d": -9.4312,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 178.64,
+      "return_20d": -21.1163,
+      "excess_63d": -15.6896,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "AMZN",
       "name": "Amazon",
-      "status": "Watch",
-      "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 259.45,
-      "return_20d": -1.1318,
-      "excess_63d": -2.0383,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "status": "Research",
+      "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
+      "close": 266.93,
+      "return_20d": 2.8157,
+      "excess_63d": 0.1169,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "GOOGL",
       "name": "Alphabet",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 284.72,
-      "return_20d": -19.0285,
-      "excess_63d": -15.6869,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 288.15,
+      "return_20d": -18.3179,
+      "excess_63d": -14.0559,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "META",
       "name": "Meta Platforms",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 610.12,
-      "return_20d": -15.0694,
-      "excess_63d": 7.2377,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 641.3,
+      "return_20d": -13.6901,
+      "excess_63d": 9.1935,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "JPM",
       "name": "JPMorgan Chase",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 334.46,
-      "return_20d": 0.4505,
-      "excess_63d": -1.9731,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 341.9,
+      "return_20d": 2.2,
+      "excess_63d": -3.0263,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "V",
       "name": "Visa",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 422.67,
-      "return_20d": 9.6491,
-      "excess_63d": 21.7887,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 421.64,
+      "return_20d": 8.5051,
+      "excess_63d": 18.5843,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "WMT",
       "name": "Walmart",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 125.475,
-      "return_20d": 12.6751,
-      "excess_63d": 16.2635,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 125.61,
+      "return_20d": 11.061,
+      "excess_63d": 13.2267,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "COST",
       "name": "Costco",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 1053.46,
-      "return_20d": 11.4383,
-      "excess_63d": 15.363,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 1066.39,
+      "return_20d": 11.3061,
+      "excess_63d": 15.1882,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "XOM",
       "name": "Exxon Mobil",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 165.88,
-      "return_20d": -1.8549,
-      "excess_63d": 9.1157,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 164.77,
+      "return_20d": -4.2981,
+      "excess_63d": 5.853,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "CAT",
       "name": "Caterpillar",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 558.66,
-      "return_20d": -30.0565,
-      "excess_63d": -28.5109,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 598.71,
+      "return_20d": -24.937,
+      "excess_63d": -26.7602,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "AVGO",
       "name": "Broadcom",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 293.41,
-      "return_20d": -18.8444,
-      "excess_63d": -25.7763,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 319.54,
+      "return_20d": -9.9355,
+      "excess_63d": -20.9833,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "AMD",
       "name": "Advanced Micro Devices",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 447.465,
-      "return_20d": -26.3868,
-      "excess_63d": -0.1049,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 508.675,
+      "return_20d": -14.4106,
+      "excess_63d": 9.3862,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "ORCL",
       "name": "Oracle",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 116.07,
-      "return_20d": -17.9485,
-      "excess_63d": -18.2256,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 119.77,
+      "return_20d": -12.8343,
+      "excess_63d": -15.2756,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "CRM",
       "name": "Salesforce",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 213.64,
-      "return_20d": -6.7522,
-      "excess_63d": 13.0007,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 214.885,
+      "return_20d": -8.0411,
+      "excess_63d": 11.0852,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "NFLX",
       "name": "Netflix",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 63.39,
-      "return_20d": -9.8357,
-      "excess_63d": -12.2945,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 63.91,
+      "return_20d": -9.508,
+      "excess_63d": -12.4629,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "TSLA",
       "name": "Tesla",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 358.215,
-      "return_20d": -6.3931,
-      "excess_63d": 12.8956,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 377.91,
+      "return_20d": -0.037,
+      "excess_63d": 15.6203,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "UNH",
       "name": "UnitedHealth Group",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 394.22,
-      "return_20d": 3.9308,
-      "excess_63d": 1.6698,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 397.61,
+      "return_20d": 5.1433,
+      "excess_63d": 1.4624,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "JNJ",
       "name": "Johnson & Johnson",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 276.33,
-      "return_20d": 5.6711,
-      "excess_63d": 10.7648,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 282.115,
+      "return_20d": 6.8213,
+      "excess_63d": 11.2112,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "LLY",
       "name": "Eli Lilly",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 1354.765,
-      "return_20d": 14.9875,
-      "excess_63d": 14.8515,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 1412.32,
+      "return_20d": 19.4356,
+      "excess_63d": 18.6743,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "MRK",
       "name": "Merck",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 146.755,
-      "return_20d": 0.814,
-      "excess_63d": 17.4067,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 148.72,
+      "return_20d": 2.2412,
+      "excess_63d": 16.847,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "ABBV",
       "name": "AbbVie",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 291.53,
-      "return_20d": 6.1228,
-      "excess_63d": 22.9563,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 293.305,
+      "return_20d": 5.0068,
+      "excess_63d": 20.1166,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "BAC",
       "name": "Bank of America",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 49.415,
-      "return_20d": -9.0131,
-      "excess_63d": -17.6236,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 50.58,
+      "return_20d": -7.3117,
+      "excess_63d": -18.4918,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "HD",
       "name": "Home Depot",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 343.43,
-      "return_20d": 18.1207,
-      "excess_63d": 3.2498,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 353.465,
+      "return_20d": 21.6286,
+      "excess_63d": 2.5207,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "MCD",
       "name": "McDonald's",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 276.45,
-      "return_20d": 17.5233,
-      "excess_63d": 6.3643,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 281.57,
+      "return_20d": 19.4713,
+      "excess_63d": 5.5097,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "KO",
       "name": "Coca-Cola",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 95.665,
-      "return_20d": 8.6362,
-      "excess_63d": 15.4057,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 96.025,
+      "return_20d": 6.9559,
+      "excess_63d": 13.7373,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "PEP",
       "name": "PepsiCo",
       "status": "Research",
       "reason": "Passes all three price-trend conditions. Unvalidated research candidate, not a buy recommendation.",
-      "close": 141.31,
-      "return_20d": 12.1419,
-      "excess_63d": 8.3295,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 141.87,
+      "return_20d": 11.9732,
+      "excess_63d": 5.6751,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "CVX",
       "name": "Chevron",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 212.63,
-      "return_20d": 0.3019,
-      "excess_63d": 14.6708,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 210.86,
+      "return_20d": -1.937,
+      "excess_63d": 10.2229,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     },
     {
       "symbol": "GE",
       "name": "GE Aerospace",
       "status": "Watch",
       "reason": "Does not pass all three price-trend conditions. This is not a sell recommendation.",
-      "close": 323.3,
-      "return_20d": 4.8824,
-      "excess_63d": -7.067,
-      "as_of": "2026-11-06",
-      "window_start": "2026-08-10"
+      "close": 335.66,
+      "return_20d": 8.7633,
+      "excess_63d": -6.5792,
+      "as_of": "2026-11-09",
+      "window_start": "2026-08-11"
     }
   ],
   "mentions": [],
@@ -865,19 +865,29 @@
     "strategy": "Weekly top five: trend screen + current analyst aggregate; 18% of the fixed paper budget per holding.",
     "budget_usd": 10000.0,
     "target_symbols": [
+      "LLY",
       "V",
       "ABBV",
       "WMT",
-      "LLY",
-      "KO"
+      "COST"
     ],
     "candidates": [
       {
+        "symbol": "LLY",
+        "name": "Eli Lilly",
+        "score": 31.9112,
+        "return_20d": 19.4356,
+        "excess_63d": 18.6743,
+        "buy_pct": 86.49,
+        "opinion_count": 37,
+        "opinion_period": "2026-11-01"
+      },
+      {
         "symbol": "V",
         "name": "Visa",
-        "score": 33.181,
-        "return_20d": 9.6491,
-        "excess_63d": 21.7887,
+        "score": 29.6906,
+        "return_20d": 8.5051,
+        "excess_63d": 18.5843,
         "buy_pct": 89.8,
         "opinion_count": 49,
         "opinion_period": "2026-11-01"
@@ -885,9 +895,9 @@
       {
         "symbol": "ABBV",
         "name": "AbbVie",
-        "score": 32.645,
-        "return_20d": 6.1228,
-        "excess_63d": 22.9563,
+        "score": 29.5263,
+        "return_20d": 5.0068,
+        "excess_63d": 20.1166,
         "buy_pct": 81.58,
         "opinion_count": 38,
         "opinion_period": "2026-11-01"
@@ -895,31 +905,21 @@
       {
         "symbol": "WMT",
         "name": "Walmart",
-        "score": 28.3903,
-        "return_20d": 12.6751,
-        "excess_63d": 16.2635,
+        "score": 24.95,
+        "return_20d": 11.061,
+        "excess_63d": 13.2267,
         "buy_pct": 89.58,
         "opinion_count": 48,
         "opinion_period": "2026-11-01"
       },
       {
-        "symbol": "LLY",
-        "name": "Eli Lilly",
-        "score": 26.9764,
-        "return_20d": 14.9875,
-        "excess_63d": 14.8515,
-        "buy_pct": 86.49,
-        "opinion_count": 37,
-        "opinion_period": "2026-11-01"
-      },
-      {
-        "symbol": "KO",
-        "name": "Coca-Cola",
-        "score": 25.5648,
-        "return_20d": 8.6362,
-        "excess_63d": 15.4057,
-        "buy_pct": 80.0,
-        "opinion_count": 35,
+        "symbol": "COST",
+        "name": "Costco",
+        "score": 24.6107,
+        "return_20d": 11.3061,
+        "excess_63d": 15.1882,
+        "buy_pct": 68.09,
+        "opinion_count": 47,
         "opinion_period": "2026-11-01"
       }
     ],

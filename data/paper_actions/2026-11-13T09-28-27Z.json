@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-13T09:28:27.474253Z",
+  "result": "submitted",
+  "target_symbols": [
+    "LLY",
+    "ABBV",
+    "V",
+    "COST",
+    "AMD"
+  ],
+  "actions": [
+    {
+      "symbol": "MRK",
+      "side": "sell",
+      "quantity": 12.477189843,
+      "status": "submitted"
+    },
+    {
+      "symbol": "WMT",
+      "side": "sell",
+      "quantity": 14.464721954,
+      "status": "submitted"
+    },
+    {
+      "symbol": "COST",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    },
+    {
+      "symbol": "AMD",
+      "side": "buy",
+      "notional_usd": 1800.0,
+      "status": "submitted"
+    }
+  ]
+}

@@ -2,42 +2,36 @@
   "schema_version": 1,
   "managed_symbols": [
     "ABBV",
-    "CVX",
+    "AMD",
+    "COST",
     "LLY",
     "MRK",
-    "MSFT",
     "V",
     "WMT"
   ],
-  "last_rebalance_at": "2026-11-06T09:20:26.467684Z",
+  "last_rebalance_at": "2026-11-13T09:28:27.474253Z",
   "last_result": "submitted",
   "last_actions": [
     {
-      "symbol": "CVX",
+      "symbol": "MRK",
       "side": "sell",
-      "quantity": 8.079824207,
-      "status": "submitted"
-    },
-    {
-      "symbol": "MSFT",
-      "side": "sell",
-      "quantity": 3.644453441,
-      "status": "submitted"
-    },
-    {
-      "symbol": "LLY",
-      "side": "buy",
-      "notional_usd": 121.71,
+      "quantity": 12.477189843,
       "status": "submitted"
     },
     {
       "symbol": "WMT",
+      "side": "sell",
+      "quantity": 14.464721954,
+      "status": "submitted"
+    },
+    {
+      "symbol": "COST",
       "side": "buy",
       "notional_usd": 1800.0,
       "status": "submitted"
     },
     {
-      "symbol": "MRK",
+      "symbol": "AMD",
       "side": "buy",
       "notional_usd": 1800.0,
       "status": "submitted"
